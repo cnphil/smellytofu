@@ -1,0 +1,515 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="author" content="Phil Xiaojun Hu">
+		<meta name="description" content="Smelly Tofu is the personal website portal of Phil Xiaojun Hu, @cnphil.">
+		<link rel="stylesheet" type="text/css" href="images/font-min.css" media="screen" />
+		<title>Project Smelly Tofu</title>
+		<style>
+					
+			body
+			{
+				background-color: #0c121e; /* content pages #597d9a; */
+				background-repeat: repeat;
+				margin: 0px;
+				position: fixed !important;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+			}
+			
+			a {color: inherit;}
+			
+			a:link {text-decoration:none;}
+			
+			a:visited {text-decoration:none;}
+			
+			a:hover
+			{
+				background-color: #2e3646;
+				text-decoration:none;
+			}
+			
+			a:active
+			{
+				background-color: #2e3646;
+				text-decoration:none;
+			}
+
+			.page-container
+			{
+				position: absolute;
+				top: 18%;
+				margin-left: 80px;
+			}
+			
+			.headline-wrapper
+			{
+				position: relative;
+				display: none;
+				z-index: 2;
+			}
+
+			.headline
+			{
+				-webkit-font-smoothing: antialiased;
+				box-sizing: border-box;
+				color: rgb(255, 255, 255);
+				display: block;
+				font-family: 'Myriad Set Pro';
+				font-size: 100px;
+				font-style: normal;
+				font-variant: normal;
+				font-weight: 100;
+				position: relative;
+				text-align: left;
+				text-rendering: optimizelegibility;
+			}
+			
+			.choice-module
+			{
+				position: relative;
+				text-align: center;
+				display: none;
+				overflow: hidden; /* overflow and white-space allows horizontal child divs. */
+				white-space: nowrap;
+				z-index: 3;
+			}
+			
+			.horizon-div
+			{
+				display: inline-block;
+				margin-left: 15px;
+				margin-right: 15px;
+				vertical-align: middle;
+			}
+			
+			.round-image-container
+			{
+				width: 36px;
+				height: 36px;
+				display: block;
+				position: relative;
+				overflow: hidden;
+			}
+			
+			.round-image
+			{
+				width: 36px;
+				height: 36px;
+				display:block;
+				position:absolute;
+				left: 0px;
+				top: 0px;
+			}
+			
+			.round-w
+			{ 
+			    transition: all 0.3s linear;
+			    -webkit-transition: all 0.3s linear;
+			    moz-transition: all 0.3s linear;
+			    -o-transition: all 0.3s linear;
+			    /* background: url("/images/blog-w.png"); */
+				/* background-size:36px 36px; */
+				/* background-repeat:no-repeat; */
+			    filter: alpha(opacity=100);
+			    opacity: 1;
+			}
+			
+			.round-b
+			{ 
+			    transition: all 0.3s linear;
+			    -webkit-transition: all 0.3s linear;
+			    moz-transition: all 0.3s linear;
+			    -o-transition: all 0.3s linear;
+			    /* background: url("/images/blog-b.png"); */
+				/* background-size:36px 36px; */
+				/* background-repeat:no-repeat; */
+			    filter: alpha(opacity=0);
+			    opacity: 0;
+			}
+			
+			.round-button:hover .round-b
+			{ 
+				filter: alpha(opacity=100); 
+				opacity: 1;
+			}
+			
+			#blog-w
+			{
+				background: url("/images/blog-w.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#blog-b
+			{
+				background: url("/images/blog-b.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#project-w
+			{
+				background: url("/images/hammer-w.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#project-b
+			{
+				background: url("/images/hammer-b.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#trips-w
+			{
+				background: url("/images/track-w.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#trips-b
+			{
+				background: url("/images/track-b.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#quote-w
+			{
+				background: url("/images/left-w.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			#quote-b
+			{
+				background: url("/images/left-b.png");
+				background-size:36px 36px;
+				background-repeat:no-repeat;
+			}
+			
+			.choices
+			{
+				color: rgb(180, 180, 180);
+				font-family: Verdana, Geneva, sans-serif; /* 'Lucida Grande', Helvetica, Arial, Verdana, sans-serif; */
+				font-size: 16px;
+				font-weight: 100;
+			}
+
+			.background
+			{
+				position: absolute;
+				bottom: 0;
+				right: 0;
+			}
+
+			.background-img
+			{
+				max-width: 650px;
+				width: auto;
+				height: auto;
+				z-index: -1;
+			}
+
+			.footer-container
+			{
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				margin-left: 80px;
+				margin-bottom: 20px;
+				display: none;
+				text-align: center;
+				z-index: 2;
+			}
+
+			.footer
+			{
+				-webkit-font-smoothing: antialiased;
+				color: rgb(133, 133, 133);
+				display: block;
+				font-family: 'Lucida Grande', 'Lucida Sans Unicode', Helvetica, Arial, Verdana, sans-serif;
+				font-size: 10px;
+			}
+			
+			.footer a:hover
+			{
+				background-color: transparent;
+				text-decoration:none;
+			}
+			
+			.footer a:active
+			{
+				background-color: transparent;
+				text-decoration:none;
+			}
+			
+			/* -- ROUND BUTTON -- */
+			.round-button {
+			    display:block;
+			    width:36px;
+			    height:36px;
+			    line-height:36px;
+			    border: 2.4px solid #597d9a;
+			    border-radius: 50%;
+			    color:#597d9a;
+			    text-align:center;
+			    text-decoration:none;
+			    background: transparent;
+			    /*box-shadow: 0 0 3px gray;*/
+			    font-size:14px;
+			    font-weight:bold;
+				transition: 0.3s;
+				cursor: pointer;
+			}
+			.round-button:hover {
+			    background: #597d9a;
+			}
+			
+			.button-caption
+			{
+				display: none;
+				padding-top: 12px;
+				font-family: "Gill Sans", "Gill Sans Std", "Gill Sans MT", Verdana, "Bitstream Vera Sans", sans-serif;
+				font-size: 11px;
+				color: #597d9a;
+				line-height: 1em;
+				letter-spacing: 2px;
+				text-transform: uppercase;
+				width: 150px;
+				position: absolute;
+				text-align: center;
+				z-index: 3;
+			}
+			
+			/* -- END OF ROUND BUTTON -- */
+		</style>
+	</head>
+	<body>
+		<div class="page-container">
+			<div class="margin-mount"></div>
+			<div class="headline-wrapper">
+				<h1 class="headline">Smelly Tofu</h1>
+			</div>
+			<!--<img src="images/headline.png" />-->
+			<div class="choice-module">
+				<!--<p class="choices"><a href="/posts">posts</a></p>
+				<p class="choices"><a href="/trips">trips</a></p>
+				<p class="choices"><a href="/quotes">quotes</a></p>-->
+				
+				<div class="horizon-div">
+					<div class="round-button">
+						<a href="/posts">
+							<div class="round-image-container" id="blog-container">
+								<div class="round-image round-w" id="blog-w"></div>
+								<div class="round-image round-b" id="blog-b"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="horizon-div">
+					<div class="round-button">
+						<a href="/projects">
+							<div class="round-image-container" id="project-container">
+								<div class="round-image round-w" id="project-w"></div>
+								<div class="round-image round-b" id="project-b"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="horizon-div">
+					<div class="round-button">
+						<a href="/trips">
+							<div class="round-image-container" id="trips-container">
+								<div class="round-image round-w" id="trips-w"></div>
+								<div class="round-image round-b" id="trips-b"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+				<div class="horizon-div">
+					<div class="round-button">
+						<a href="/quotes">
+							<div class="round-image-container" id="quote-container">
+								<div class="round-image round-w" id="quote-w"></div>
+								<div class="round-image round-b" id="quote-b"></div>
+							</div>
+						</a>
+					</div>
+				</div>
+				
+			</div>
+			<div class="page-bottom-mount"></div>
+		</div>
+		
+		<div class="button-caption" id="blog-caption">posts</div>
+		<div class="button-caption" id="project-caption">projects</div>
+		<div class="button-caption" id="trips-caption">trips</div>
+		<div class="button-caption" id="quote-caption">quotes</div>
+		
+		<div class="footer-container">
+			<p class="footer"><a href="http://cnphil.com/">Phil Xiaojun Hu</a></p>
+		</div>
+		
+		<div class="background">
+			<img class="background-img" src="images/background.jpg" alt="Smelly Tofu" />
+			<!-- http://www.flickr.com/photos/photosphere/5191190972/ , by Yong Thye, licensed CC-BY-NC 2.0 -->
+		</div>
+
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+		<script>
+			window.headlineWrapperFadeInDuration = 300;
+			window.globalFadeInDuration = 400;
+			
+			$.fn.textWidth = function(){
+				var html_org = $(this).html();
+				var html_calc = '<span>' + html_org + '</span>';
+				$(this).html(html_calc);
+				var width = $(this).find('span:first').width();
+				$(this).html(html_org);
+				return width;
+			};
+			
+			function choiceModuleShouldAppear()
+			{
+				if($(".choice-module").css("display") == "none") {
+					$(".choice-module").fadeIn(window.globalFadeInDuration);
+				}
+				circledButtonCaptionAlign();
+			}
+			
+			window.imgCount = 0;
+			function choiceModuleLoadedCheck()
+			{
+				function imageLoadedCheck(url, callback)
+				{
+					var myImg = new Image();
+					$(myImg).one('load', callback);
+					myImg.src = url;
+					
+					if(myImg.complete) {
+						$(myImg).load();
+					}
+				}
+				
+				function imgCallback()
+				{
+					window.imgCount += 1;
+					if(window.imgCount >= window.mountPoints.length) {
+						choiceModuleShouldAppear();
+					}
+				}
+				
+				imageLoadedCheck("/images/blog-w.png", imgCallback);
+				imageLoadedCheck("/images/hammer-w.png", imgCallback);
+				imageLoadedCheck("/images/track-w.png", imgCallback);
+				imageLoadedCheck("/images/left-w.png", imgCallback);
+			}
+			
+			function footerContainerShouldAppear()
+			{
+				if($(".footer-container").css("display") == "none") {
+					$(".footer-container").fadeIn(window.globalFadeInDuration);
+				}
+			}
+			
+			function showContents()
+			{
+				if($(".headline-wrapper").css("display") == "none") {
+					$(".headline-wrapper").delay(700).fadeIn(window.headlineWrapperFadeInDuration, function(){
+						centerElements();
+						// choiceModuleShouldAppear();
+						choiceModuleLoadedCheck();
+						footerContainerShouldAppear();
+						footerAviationCheck();
+					});
+				}
+			}
+			
+			function centerElements()
+			{
+				var expectedWidth = $(".headline").textWidth();
+				$(".choice-module").width(expectedWidth);
+				$(".footer-container").css("margin-left", $(".margin-mount").offset().left);
+				$(".footer-container").width(expectedWidth);
+			}
+			
+			function footerAviationCheck()
+			{
+				if($(".page-bottom-mount").offset().top + 5 > $(".footer").offset().top) {
+					$(".footer-container").css("visibility", "hidden");
+				} else if($(".footer-container").css("visibility") == "hidden") {
+					$(".footer-container").css("visibility", "visible");
+				}
+			}
+			
+			function adjustSizeAndShow()
+			{
+				originalWidth = 650;
+				percent = 0.4;
+				if($(window).width()< originalWidth * (1 + percent)) {
+					$(".background-img").width($(window).width() / (1 + percent));
+				}
+				if($(".headline-wrapper").css("display") != "none") {
+					centerElements();
+					footerAviationCheck();
+					circledButtonCaptionAlign();
+				}
+				showContents();
+			}
+
+			$(document).ready(function(){
+				adjustSizeAndShow();
+				$('body').css("background-image", "url('images/bgcolor.png')"); // fill background with bgcolor (Chrome compatibility)
+			});
+
+			$(window).resize(function(){
+				adjustSizeAndShow();
+			});
+			
+			window.mountPoints = ["#blog-container", "#project-container", "#trips-container", "#quote-container"];
+			window.myCaptions = ["#blog-caption", "#project-caption", "#trips-caption", "#quote-caption"];
+			
+			function alignCaption(mountpoint, caption)
+			{
+				// caption mount to mountpoint
+				// caption width fixed to 150
+				var blogCaptionWidth = 150;
+				var targetTop = $(mountpoint).offset().top;
+				var targetLeft = $(mountpoint).offset().left;
+				targetTop = targetTop + $(mountpoint).height() + 3;
+				targetLeft = targetLeft + $(mountpoint).width() / 2 - (blogCaptionWidth / 2) + 2;
+				$(caption).css("top", targetTop);
+				$(caption).css("left", targetLeft);
+			}
+			
+			function circledButtonCaptionAlign()
+			{
+				for(i = 0; i < window.mountPoints.length; i++) {
+					alignCaption(window.mountPoints[i], window.myCaptions[i]);
+				}
+			}
+			
+			var slideDuration = 300;
+			for(i = 0; i < window.mountPoints.length; i++) (function(mountpoint, caption) {
+				// mountpoint = window.mountPoints[i];
+				// caption = window.myCaptions[i];
+				$(mountpoint).hover(function() {
+				    $(caption).stop(true, true).fadeIn({ duration: slideDuration, queue: false }).css('display', 'none').slideDown(slideDuration);    
+				}, function() {
+				    $(caption).stop(true, true).fadeOut({ duration: slideDuration, queue: false }).slideUp(slideDuration);
+				});
+			}) (window.mountPoints[i], window.myCaptions[i]);
+
+		</script>
+	</body>
+</html>
